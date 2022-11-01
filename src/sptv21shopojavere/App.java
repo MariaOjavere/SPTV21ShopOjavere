@@ -1,6 +1,5 @@
 
 package sptv21shopojavere;
-
 import manager.ClientManager;
 import manager.PurchaseManager;
 import manager.ProductManager;
@@ -54,7 +53,6 @@ public class App {
                                        
                 case 2:
                      System.out.println("---------- Список товаров ----------");
-                    System.out.println("6. Список книг");
                     productManager.printListProduct(products);
                     break;
                 case 3:
@@ -67,20 +65,16 @@ public class App {
                     break;
                 case 5:
                     System.out.println("---------- Покупка товара ----------");
-                    for (int i = 0; i < clients.length; i++) {
-                        if(purchases[i] == null){
-                            addPurchase(purchaseManager.createPurchase());
-                            break;
-                        }
-                    }
-                     break;
+                    addPurchase(purchaseManager.createPurchase(products, clients));
+                    break;
                 case 6:
                     System.out.println("---------- Доход магазина ----------");
+                    double sum=0;
                     for (int i = 0; i < purchases.length; i++) {
-                    int sum = 0;
-                    purchaseManager.getPurchase(purchases);
-                    System.out.println("Доход магазина за все время: " +sum);
+                        double price = new Double( purchases[i].getProduct().getPrice());
+                       sum += purchases[i].getCount()*price;
                     }
+                    System.out.println("Доход магазина за все время: "+sum );
                     break;
                 case 7:
                     System.out.println("---------- Добавить денег клиенту ----------");
@@ -112,14 +106,12 @@ public class App {
         this.clients = Arrays.copyOf(this.clients, this.clients.length+1);
         this.clients[this.clients.length - 1] = client;   
     }
-    private void addHistory(Purchase histories) {
+    private void addPurchase(Purchase purchases) {
         this.purchases = Arrays.copyOf(this.purchases, this.purchases.length+1);
-        this.purchases[this.purchases.length - 1] = histories;   
+        this.purchases[this.purchases.length - 1] = purchases;   
     }
 
-    private void addPurchase(Purchase createPurchase) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    
 
 }
 

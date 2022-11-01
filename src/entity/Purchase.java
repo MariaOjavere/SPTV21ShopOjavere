@@ -6,8 +6,8 @@ import java.util.Date;
 public class Purchase {
 private Client client;
 private Product product;
-private Date givenDate;
-private Date returnedDate;
+private Date date;
+private int count;
 
 
     public Purchase() {
@@ -29,26 +29,28 @@ private Date returnedDate;
         this.product = product;
     }
 
-    public Date getGivenDate() {
-        return givenDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setGivenDate(Date givenDate) {
-        this.givenDate = givenDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public Date getReturnedDate() {
-        return returnedDate;
+    public int getCount() {
+        return count;
     }
 
-    public void setReturnedDate(Date returnedDate) {
-        this.returnedDate = returnedDate;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
     public String toString() {
-        return "History{" + "client=" + client + ", product=" + product + ", givenDate=" + givenDate + ", returnedDate=" + returnedDate + '}';
+        return "Purchase{" + "client=" + client + ", product=" + product + ", date=" + date + ", count=" + count + '}';
     }
+
+   
 
 }
     

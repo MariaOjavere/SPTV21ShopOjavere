@@ -3,80 +3,40 @@ package manager;
 
 import entity.Client;
 import entity.Product;
-import java.util.Date;
+import entity.Purchase;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 
 public class PurchaseManager {
+    Scanner scanner = new Scanner(System.in);
 
-    public entity.Purchase createPurchase() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Purchase createPurchase(Product[] products, Client[] clients){
+        System.out.println("Список пользователей: ");
+        for (int i = 0; i < clients.length; i++) {
+            System.out.println(i+1+". "+clients[i].getFirstName()+" "+clients[i].getLastName());
+        }
+        System.out.print("Выбери пользователя: ");
+        int numberClient = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Список продуктов: ");
+        for (int i = 0; i < products.length; i++) {
+            System.out.println(i+1+". "+products[i].getProductName()+". ");
+        }
+        System.out.print("Выбери номер продукта: ");
+        int numberProduct = scanner.nextInt();scanner.nextLine();
+        System.out.print("Выбери кол-во продуктов: ");
+        int countProducts = scanner.nextInt();scanner.nextLine();
+        Purchase purchase = new Purchase();
+        purchase.setProduct(products[numberProduct - 1]);
+        purchase.setClient(clients[numberClient-1]);
+        purchase.setDate(new GregorianCalendar().getTime());
+        purchase.setCount(countProducts);
+        return purchase;
     }
 
-    public void getPurchase(entity.Purchase[] purchases) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   }
 
-  
 
-public class Purchase {
-    private Client client;
-    private Product product;
-    private Date givenDate;
-    private Date returnedDate;
-    private int price;
-
-        public Purchase() {
-        }
-
-        public Client getClient() {
-            return client;
-        }
-
-        public void setClient(Client client) {
-            this.client = client;
-        }
-
-        public Date getGivenDate() {
-            return givenDate;
-        }
-
-        public void setGivenDate(Date givenDate) {
-            this.givenDate = givenDate;
-        }
-
-        public Product getProduct() {
-            return product;
-        }
-
-        public void setProduct(Product product) {
-            this.product = product;
-        }
-
-        public Date getReturnedDate() {
-            return returnedDate;
-        }
-
-        public void setReturnedDate(Date returnedDate) {
-            this.returnedDate = returnedDate;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        public void setPrice(int price) {
-            this.price = price;
-        }
-
-        @Override
-        public String toString() {
-            return "Purchase{" + "client=" + client + ", product=" + product + ", givenDate=" + givenDate + ", returnedDate=" + returnedDate + ", price=" + price + '}';
-        }
-
-        
-   
-}
-}
 
 
 

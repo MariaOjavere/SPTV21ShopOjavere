@@ -5,9 +5,10 @@ import java.util.Arrays;
 
 public class Product {
     private String ProductName;
-    private String ProductType;
-    private Product[] product;
+    private String ProductPrice;
+    private String price;
     private int quantity;
+
 
     public Product() {
     }
@@ -20,22 +21,15 @@ public class Product {
         this.ProductName = ProductName;
     }
 
-    public String getProductType() {
-        return ProductType;
+    public String getProductPrice() {
+        return ProductPrice;
     }
 
-    public void setProductType(String ProductType) {
-        this.ProductType = ProductType;
+    public void setProductPrice(String ProductPrice) {
+        this.ProductPrice = ProductPrice;
     }
 
-    public Product[] getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product[] product) {
-        this.product = product;
-    }
-
+  
     public int getQuantity() {
         return quantity;
     }
@@ -44,13 +38,19 @@ public class Product {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "ProductName=" + ProductName + ", ProductType=" + ProductType + ", product=" + Arrays.toString(product) + ", quantity=" + quantity + '}';
+    public String getPrice() {
+        return price;
     }
 
-    public Object[] getClient(){
-        return null;
+    public void setPrice(String price) {
+        this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "ProductName=" + ProductName + ", ProductPrice=" + ProductPrice + ", price=" + price + ", quantity=" + quantity + '}';
+    }
+
+   
     
 }
